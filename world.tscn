@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyy6h4qwr44rt"]
+
+[ext_resource type="PackedScene" uid="uid://6xgyh66l28fk" path="res://player.tscn" id="1_j8a7a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb83c"]
+
+[sub_resource type="Gradient" id="Gradient_kgx1t"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a1jar"]
+gradient = SubResource("Gradient_kgx1t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u1u1"]
+size = Vector2(1264.5, 49)
+
+[node name="world" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_j8a7a")]
+position = Vector2(436, 230)
+
+[node name="ground" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_wb83c")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+position = Vector2(604.703, 640.518)
+rotation = -1.56351
+scale = Vector2(0.319762, 1209.66)
+texture = SubResource("GradientTexture1D_a1jar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(581.75, 622.5)
+shape = SubResource("RectangleShape2D_1u1u1")
