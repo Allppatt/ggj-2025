@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bljsnk6ssh8gw"
-path="res://.godot/imported/QuitButtonHover.png-21f1421e16a4c976b5b418fe70d082b9.ctex"
+path="res://.godot/imported/QuitButtonHover.png-ad10772fa4508769bd21333dd96b49f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon/QuitButtonHover.png"
-dest_files=["res://.godot/imported/QuitButtonHover.png-21f1421e16a4c976b5b418fe70d082b9.ctex"]
+source_file="res://ui/button/QuitButtonHover.png"
+dest_files=["res://.godot/imported/QuitButtonHover.png-ad10772fa4508769bd21333dd96b49f8.ctex"]
 
 [params]
 

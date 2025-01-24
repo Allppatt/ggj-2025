@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gjfbfusjgv3w"
-path="res://.godot/imported/QuitButtonNormal.png-b06da4deea5d5e59144842a6d261cb67.ctex"
+path="res://.godot/imported/QuitButtonNormal.png-6d4f7cc9f874e2663c46af2c7b18a971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon/QuitButtonNormal.png"
-dest_files=["res://.godot/imported/QuitButtonNormal.png-b06da4deea5d5e59144842a6d261cb67.ctex"]
+source_file="res://ui/button/QuitButtonNormal.png"
+dest_files=["res://.godot/imported/QuitButtonNormal.png-6d4f7cc9f874e2663c46af2c7b18a971.ctex"]
 
 [params]
 
