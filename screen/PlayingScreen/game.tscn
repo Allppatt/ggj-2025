@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://c52copm6fqwbb"]
+[gd_scene load_steps=4 format=3 uid="uid://c52copm6fqwbb"]
 
-[ext_resource type="Texture2D" uid="uid://dc4dvnqqqyp5m" path="res://icon.svg" id="1_whjde"]
+[ext_resource type="PackedScene" path="res://assets/player_object/MC/MainChar.tscn" id="1_etfms"]
+[ext_resource type="Texture2D" path="res://bg/darkerBG.png" id="2_sos7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nykb3"]
+size = Vector2(42.1028, 20)
 
 [node name="Game" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(133, 122)
-texture = ExtResource("1_whjde")
+[node name="DarkerBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(578, 320)
+scale = Vector2(0.189114, 0.189114)
+texture = ExtResource("2_sos7p")
+
+[node name="Player" parent="." instance=ExtResource("1_etfms")]
+position = Vector2(171, 477)
+scale = Vector2(0.0658212, 0.0658212)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(568, 628)
+rotation = 3.14159
+scale = Vector2(34.0157, 5.66104)
+shape = SubResource("RectangleShape2D_nykb3")
+debug_color = Color(0, 0.6, 0.701961, 0)
