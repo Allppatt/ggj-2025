@@ -1,62 +1,90 @@
 extends CharacterBody2D
 
+<<<<<<< HEAD:screen/PlayingScreen/script/player.gd
 const max_speed = 125
 const accel = 1400
 const friction = 1000
 const GRAVITY := 1900
 const JUMP_VELOCITY := -1000
 var input = Vector2.ZERO
+=======
+# Constants for movement
+const MAX_SPEED = 400
+const ACCELERATION = 1500
+const FRICTION = 600
+const GRAVITY = 1900
+const JUMP_VELOCITY = -1000
+>>>>>>> c32c23940c67c80d537db95c9273fb443cd483c7:script/player.gd
 
-#fordash
-var dash_speed = 1000
+# Dash variables
+const DASH_SPEED = 1000
 var can_dash = false
-var can_dashhh = true
+var can_dash_ready = true
+
+# Input variables
+var input_x = 0.0
+var input_y = 0.0
 
 func _process(delta):
+	# Apply gravity if not on the floor
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
 func _physics_process(delta):
-	player_movement(delta)
-	
-	if Input.is_action_just_pressed("dash") and can_dashhh:
-		can_dash = true
-		can_dashhh = false
-		$Timer.start()
-		$timer_again.start()
+	# Handle player movement
+	handle_player_movement(delta)
+
+	# Handle dash input
+	if Input.is_action_just_pressed("dash") and can_dash_ready:
+		initiate_dash()
 
 func get_input():
-	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	return input.normalized()
-	
-func player_movement(delta):
-	input = get_input()
-	
-	if input == Vector2.ZERO:
-		if velocity.length() > (friction * delta):
-			velocity -= velocity.normalized() * (friction * delta)
-		else:
-			velocity = Vector2.ZERO
+	# Get input for horizontal movement
+	input_x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	return input_x
+
+func handle_player_movement(delta):
+	input_x = get_input()
+
+	# Apply friction if no input is given
+	if input_x == 0:
+		apply_friction(delta)
 	else:
-		velocity += (input * accel * delta)
-		velocity = velocity.limit_length(max_speed)
-	
+		apply_acceleration(delta)
+
+	# Handle jumping
 	if is_on_floor() and Input.is_action_pressed("ui_up"):
 		velocity.y = JUMP_VELOCITY
-	
-	var direct :=  Input.get_axis("ui_left","ui_right")
-	if direct:
-		if can_dash:
-			velocity.x = direct * dash_speed
-		else:
-			velocity.x = direct * max_speed
-		
+
+	# Handle dashing
+	if can_dash:
+		handle_dash()
+
+	# Move the character
 	move_and_slide()
 
+func apply_friction(delta):
+	if velocity.length() > (FRICTION * delta):
+		velocity.x -= sign(velocity.x) * (FRICTION * delta)
+	else:
+		velocity.x = 0
+
+func apply_acceleration(delta):
+	velocity.x += (input_x * ACCELERATION * delta)
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+
+func handle_dash():
+	if input_x != 0:
+		velocity.x = input_x * DASH_SPEED
+
+func initiate_dash():
+	can_dash = true
+	can_dash_ready = false
+	$Timer.start()
+	$timer_again.start()
 
 func _on_timer_timeout() -> void:
 	can_dash = false
 
-
 func _on_timer_again_timeout() -> void:
-	can_dashhh = true
+	can_dash_ready = true
