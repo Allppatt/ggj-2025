@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://6xgyh66l28fk"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_x258r"]
+[ext_resource type="Texture2D" uid="uid://3f5hy5lfuikj" path="res://icon.svg" id="2_wkmq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu1m"]
+size = Vector2(76, 76)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_448ps"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm0sg"]
+bg_color = Color(0.844539, 0.0863585, 0, 1)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_x258r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.999969, 5)
+scale = Vector2(0.640625, 0.625)
+texture = ExtResource("2_wkmq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_wtu1m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="timer_again" type="Timer" parent="."]
+
+[node name="heath bar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_top = -0.039
+anchor_bottom = -0.039
+offset_left = -88.0
+offset_top = -72.0
+offset_right = 88.0
+offset_bottom = -49.0
+theme_override_styles/background = SubResource("StyleBoxFlat_448ps")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fm0sg")
+max_value = 5.0
+value = 2.5
+show_percentage = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_again" to="." method="_on_timer_again_timeout"]
