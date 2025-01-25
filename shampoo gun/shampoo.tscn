@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://0dwo1rsddi0g"]
+
+[ext_resource type="Texture2D" uid="uid://dc4dvnqqqyp5m" path="res://icon.svg" id="1_hiyn2"]
+[ext_resource type="Script" path="res://shampoo gun/gun.gd" id="1_shbcm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7ow"]
+size = Vector2(119, 120)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_shbcm")
+
+[node name="dordor" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_hiyn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_2t7ow")
+
+[node name="Node2D" type="Node2D" parent="CharacterBody2D"]

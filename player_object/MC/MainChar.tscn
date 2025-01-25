@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://6xgyh66l28fk"]
+[gd_scene load_steps=6 format=3 uid="uid://kjnk15m314cg"]
 
-[ext_resource type="Script" path="res://script/player.gd" id="1_x258r"]
-[ext_resource type="Texture2D" uid="uid://3f5hy5lfuikj" path="res://icon.svg" id="2_wkmq4"]
+[ext_resource type="Script" path="res://screen/PlayingScreen/script/player.gd" id="1_x258r"]
+[ext_resource type="Texture2D" uid="uid://dc4dvnqqqyp5m" path="res://icon.svg" id="2_wkmq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtu1m"]
 size = Vector2(76, 76)
@@ -13,6 +13,7 @@ bg_color = Color(0.180005, 0.180005, 0.180005, 1)
 bg_color = Color(0.844539, 0.0863585, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(598, 410)
 script = ExtResource("1_x258r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,15 +34,18 @@ wait_time = 0.3
 anchors_preset = -1
 anchor_top = -0.039
 anchor_bottom = -0.039
-offset_left = -88.0
-offset_top = -72.0
-offset_right = 88.0
-offset_bottom = -49.0
+offset_left = -583.0
+offset_top = 203.0
+offset_right = -407.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_448ps")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fm0sg")
 max_value = 5.0
 value = 2.5
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="timer_again" to="." method="_on_timer_again_timeout"]

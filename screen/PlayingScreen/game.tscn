@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c52copm6fqwbb"]
+[gd_scene load_steps=3 format=3 uid="uid://c52copm6fqwbb"]
 
-[ext_resource type="Texture2D" uid="uid://dc4dvnqqqyp5m" path="res://icon.svg" id="1_whjde"]
+[ext_resource type="PackedScene" uid="uid://kjnk15m314cg" path="res://player_object/MC/MainChar.tscn" id="1_24gx6"]
+[ext_resource type="PackedScene" uid="uid://0dwo1rsddi0g" path="res://shampoo gun/shampoo.tscn" id="2_24kbo"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(133, 122)
-texture = ExtResource("1_whjde")
+[node name="Player" parent="." instance=ExtResource("1_24gx6")]
+
+[node name="Node2D" parent="." instance=ExtResource("2_24kbo")]
+position = Vector2(583, 294)

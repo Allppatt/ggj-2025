@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq2osvmurocvo"]
 
-[ext_resource type="Script" path="res://screen/OptionScreen/volume.gd" id="1_qlet6"]
+[ext_resource type="Script" path="res://screen/PlayingScreen/OptionScreen/volume.gd" id="1_qlet6"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
