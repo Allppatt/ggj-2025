@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhnnweinnwvf6"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_71eyi"]
+[ext_resource type="Texture2D" uid="uid://cijllwj6hotq7" path="res://New Project.png" id="2_t6kqw"]
+
+[sub_resource type="Animation" id="Animation_23m2d"]
+resource_name = "Fade in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4s7ki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d1udb"]
+resource_name = "Fade out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_id1ay"]
+_data = {
+"Fade in": SubResource("Animation_23m2d"),
+"Fade out": SubResource("Animation_d1udb"),
+"RESET": SubResource("Animation_4s7ki")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_71eyi")
+intro_duration = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 330)
+texture = ExtResource("2_t6kqw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -117.0
+offset_top = -278.0
+offset_right = 1291.0
+offset_bottom = 1130.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_id1ay")
+}

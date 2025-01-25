@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://3memioqv1oit"]
+[gd_scene load_steps=9 format=3 uid="uid://c5yq3eh11q0ai"]
 
-[node name="Menu" type="Control"]
+[ext_resource type="Script" path="res://volume.gd" id="1_fvjpj"]
+[ext_resource type="Texture2D" uid="uid://wlg48lnonyak" path="res://ui/button/VolButtonNormal.png" id="2_bye0h"]
+[ext_resource type="Texture2D" uid="uid://gcd84hm4mvpm" path="res://ui/button/Button.png" id="2_uj75b"]
+[ext_resource type="Texture2D" uid="uid://djutugff5vxyb" path="res://ui/button/VolButtonPressed.png" id="3_c12pw"]
+[ext_resource type="Texture2D" uid="uid://db6615xqck46j" path="res://ui/button/Button Clicked.png" id="3_cj8ol"]
+[ext_resource type="Texture2D" uid="uid://crglu67sl4e6s" path="res://ui/button/VolButtonHover.png" id="4_5gi7m"]
+[ext_resource type="Texture2D" uid="uid://dne6beyrv16uj" path="res://ui/button/Button Hover.png" id="4_q2pll"]
+[ext_resource type="Texture2D" uid="uid://7bhuxnr7b1g6" path="res://Thumbnail Dirty Bubble.png" id="8_7fwt7"]
+
+[node name="OptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,18 +19,33 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 425.0
+offset_top = 201.0
+offset_right = 1925.0
+offset_bottom = 1205.0
+scale = Vector2(0.224384, 0.1802)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Volume" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Volume"
+texture_normal = ExtResource("2_bye0h")
+texture_pressed = ExtResource("3_c12pw")
+texture_hover = ExtResource("4_5gi7m")
+script = ExtResource("1_fvjpj")
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Back"
+texture_normal = ExtResource("2_uj75b")
+texture_pressed = ExtResource("3_cj8ol")
+texture_hover = ExtResource("4_q2pll")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="ThumbnailDirtyBubble2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(574.222, 324.75)
+scale = Vector2(0.90625, 0.90625)
+texture = ExtResource("8_7fwt7")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Volume" to="MarginContainer/VBoxContainer/Volume" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="MarginContainer/VBoxContainer/Volume" method="_on_back_pressed"]
